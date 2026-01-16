@@ -307,4 +307,4 @@ function downloadCSV() {
     a.click();
     document.body.removeChild(a);
 }
-function logout() { window.location.href = "login.html"; }
+function logout() { window.location.href = "index.html"; }
