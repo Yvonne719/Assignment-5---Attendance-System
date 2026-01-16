@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Attendance System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="attendance.js" defer></script>
+</head>
+<body onload="initDashboard()">
+    <div class="dashboard-card">
+        <div class="page-title-box">
+    <div class="title-icon">
+    </div>
+    <h2>📂Dashboard</h2>
+</div>
+        <header>
+            <h2 id="welcomeMsg">Loading...</h2>
+            <button onclick="logout()">Logout</button>
+        </header>
+        <div id="dashboardContent">
+            <!-- Dynamic content will be loaded here based on user role -->
+             <section id="stdSection" class="hidden">
+                <fieldset>
+                    <legend>📝Mark Your Presence</legend>
+                <div class="form-group">
+                    <label for="select programme">Programme:</label>
+                    <select name="" id="programmeSelect">
+                        <option value="">Select Your Programme</option>
+                        <option value="Computer Science">Computer Science</option>
+                        <option value="Software Engineering">Software Engineering</option>
+                    </select>
+                    <span id="progError" class="error-text">⚠️ Please select a programme</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="select course">Course</label>
+                    <select name="" id="courseSelect">
+                        <option value="">Select Your Course</option>
+                        <option value="Web Programming and Applications">Web Programming and Applications</option>
+                        <option value="Database Systems">Database Systems</option>
+                    </select>
+                    <span id="courseError" class="error-text">⚠️ Please select a course</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="select group">Group Name</label>
+                    <select name="" id="groupSelect">
+                        <option value="">Select Your Group</option>
+                        <option value="Group A">Group A</option>
+                        <option value="Group B">Group B</option>
+                        <option value="Group C">Group C</option>
+                    </select>
+                    <span id="groupError" class="error-text">⚠️ Please select a group</span>
+                </div>
+                    <button onclick="markAttendance()">Submit Attendance</button>
+                </fieldset>
+             </section>
+
+             <section id="lecSection" class="hidden">
+                <fieldset>
+                    <legend>Attendance Report</legend>
+                     <div class="filter-controls">
+                        <div>
+                         <label for="dateFilter">Filter by Date:</label>
+                         <input type="date" id="dateFilter" onchange="loadRecords()">
+                        </div>
+
+                       <div>
+                        <label for="filterProgramme">Filter by Programme:</label>
+                        <select name="" id="progFilter" onchange="loadRecords()">
+                            <option value="">All Programmes</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Software Engineering">Software Engineering</option>
+                        </select>
+                       </div>
+
+                       <div>
+                        <label for="filterCourse">Filter by Course</label>
+                        <select name="" id="courseFilter" onchange="loadRecords()">
+                            <option value="">Available courses</option>
+                            <option value="Web Programming and Applications">Web Programming and Applications</option>
+                            <option value="Database Systems">Database Systems</option>
+                        </select>
+                       </div>
+
+                       <div>
+                        <label for="filterGroup">Filter by Group</label>
+                        <select name="" id="groupFilter" onchange="loadRecords()">
+                            <option value="">All Groups</option>
+                            <option value="Group A">Group A</option>
+                            <option value="Group B">Group B</option>
+                            <option value="Group C">Group C</option>
+                        </select>
+                       </div>
+                       <div class="reset-container">
+                          <label>&nbsp;</label> 
+                          <button type="button" class="reset-btn" onclick="resetFilters()">Reset</button>
+                          <button type="button" class="download-btn" onclick="downloadCSV()">📥 Download CSV</button>
+                       </div>
+                     </div>
+               
+                    <div class="table-container">
+                     <table id="records-table">
+                        <thead>
+                            <tr>
+                                <th>Student Name</th>
+                                <th>Student ID</th>
+                                <th>Programme</th>
+                                <th>Course</th>
+                                <th>Group</th>
+                                <th>Date</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recordsTableBody">
+                            <!-- Attendance records will be dynamically loaded here -->
+                        </tbody>
+                     </table>
+                    </div>
+                </fieldset>
+             </section>
+        </div>
+    </div>
+    <div id="toast"></div>
+</body>
+</html>
+

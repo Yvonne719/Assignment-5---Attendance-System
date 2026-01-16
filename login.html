@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Attendance System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="attendance.js" defer></script>
+</head>
+<body>
+    <div class="login-card">
+        <h2>📊 Student Attendance Management System</h2>
+        <h3>Login to mark or view attendance</h3>
+        <form id="loginForm">
+            <fieldset>
+                <legend>Account Login</legend>
+                <div class="form-group">
+                   <label for="username">Username:</label>
+                   <input type="text" id="username" name="username" placeholder="e.g. Martina Clarke"required>
+                   <span id="nameError" class="error-text">⚠️Please enter a valid username</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                    <span id="passError" class="error-text">⚠️Please enter a valid password</span>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>User Roles</legend>
+                <select id="userRole" onchange="checkRole()" required>
+                    <option value="">Who are you?</option>
+                    <option value="lecturer">Lecturer</option>
+                    <option value="student">Student</option>
+                    <span id="roleError" class="error-text">⚠️Please select a role</span>
+                </select>
+
+                <div id="studentExtraInfo" style="display: none;"> 
+                    <div class="form-group">
+                        <label for="studentID">Student ID:</label>
+                        <input type="text" id="studentID" name="studentID" placeholder="e.g. 2425400123">
+                        <span id="idError" class="error-text">⚠️Enter a valid student ID</span>
+                    </div>
+                </div>
+            </fieldset>
+                <button type="submit"> Login</button>  
+    </div>
+       </form>  
+</body>
+</html>
